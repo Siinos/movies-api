@@ -1,0 +1,44 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "commonjs",
+    "allowJs": true,
+    "sourceMap": true,
+    "outDir": "dist",
+    "strict": true,
+    "noImplicitAny": true,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "strictPropertyInitialization": false,
+    "baseUrl": "./src",
+    "typeRoots": [
+      "@types",
+      "./node_modules/@types"
+    ],
+    "paths": {
+      "@commons/*": [
+        "commons/*"
+      ],
+      "@controllers/*": [
+        "controllers/*"
+      ],
+      "@middlewares/*": [
+        "middlewares/*"
+      ],
+      "@services/*": [
+        "services/*"
+      ],
+    }
+  },
+  "lib": [
+    "ESNext"
+  ],
+  "include": [
+    "./src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

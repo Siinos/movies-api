@@ -1,0 +1,54 @@
+{
+  "name": "movies-api",
+  "version": "1.0.0",
+  "description": "Recruitment task for the position of Node.js developer at The Software House.",
+  "main": "dist/index.js",
+  "scripts": {
+    "lint": "eslint . --ext .ts",
+    "prettier-format": "prettier --config .prettierrc src/**/*.ts --write",
+    "start": "ts-node-dev --respawn --transpile-only -r dotenv/config src/index.ts",
+    "build:prod": "tsc",
+    "start:prod": "node -r dotenv/config dist/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Siinos/movies-api.git"
+  },
+  "keywords": [
+    "rest",
+    "api"
+  ],
+  "author": "Kamil Janiszewski",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Siinos/movies-api/issues"
+  },
+  "homepage": "https://github.com/Siinos/movies-api#readme",
+  "devDependencies": {
+    "@types/compression": "^1.7.2",
+    "@types/express": "^4.17.14",
+    "@types/module-alias": "^2.0.1",
+    "@types/node": "^18.11.0",
+    "@typescript-eslint/eslint-plugin": "^5.40.1",
+    "@typescript-eslint/parser": "^5.40.1",
+    "eslint": "^8.25.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.7.1",
+    "ts-node": "^10.9.1",
+    "ts-node-dev": "^2.0.0",
+    "tsconfig-paths": "^4.1.0",
+    "typescript": "^4.8.4"
+  },
+  "dependencies": {
+    "@decorators/di": "^1.0.3",
+    "@decorators/express": "^2.6.0",
+    "compression": "^1.7.4",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "http-status-codes": "^2.2.0",
+    "module-alias": "^2.2.2",
+    "reflect-metadata": "^0.1.13"
+  }
+}
