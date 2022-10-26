@@ -2,10 +2,17 @@ import 'reflect-metadata';
 import moduleAlias from 'module-alias';
 
 moduleAlias.addAliases({
-  '@commons': `${__dirname}/commons`,
+  '@errors': `${__dirname}/errors`,
   '@controllers': `${__dirname}/controllers`,
+  '@dtos': `${__dirname}/dtos`,
+  '@helpers': `${__dirname}/helpers`,
+  '@interfaces': `${__dirname}/interfaces`,
+  '@mappers': `${__dirname}/mappers`,
   '@middlewares': `${__dirname}/middlewares`,
-  '@services': `${__dirname}/services`
+  '@repositories': `${__dirname}/repositories`,
+  '@services': `${__dirname}/services`,
+  '@utils': `${__dirname}/utils`,
+  '@validators': `${__dirname}/validators`
 });
 
 import { App } from './app';

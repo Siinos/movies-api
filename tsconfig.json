@@ -18,17 +18,38 @@
       "./node_modules/@types"
     ],
     "paths": {
-      "@commons/*": [
-        "commons/*"
+      "@errors/*": [
+        "errors/*"
       ],
       "@controllers/*": [
         "controllers/*"
       ],
+      "@dtos/*": [
+        "dtos/*"
+      ],
+      "@helpers/*": [
+        "helpers/*"
+      ],
+      "@interfaces/*": [
+        "interfaces/*"
+      ],
+      "@mappers/*": [
+        "mappers/*"
+      ],
       "@middlewares/*": [
         "middlewares/*"
       ],
+      "@repositories/*": [
+        "repositories/*"
+      ],
       "@services/*": [
         "services/*"
+      ],
+      "@utils/*": [
+        "utils/*"
+      ],
+      "@validators/*": [
+        "validators/*"
       ],
     }
   },
