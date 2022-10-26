@@ -18,4 +18,20 @@ export default class MovieMapper {
 
     return movie;
   }
+
+  public mapMovieToDbMovie(movie: Movie): DbMovie {
+    const dbMovie: DbMovie = {
+      id: movie.id,
+      genres: movie.genres,
+      title: movie.title,
+      year: String(movie.year),
+      runtime: String(movie.runtime),
+      director: movie.director,
+      actors: movie.actors,
+      plot: movie.plot,
+      posteUrl: movie.posteUrl
+    };
+
+    return dbMovie;
+  }
 }

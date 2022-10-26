@@ -47,6 +47,13 @@ export default class MovieRepository {
     return movies;
   }
 
+  public async saveMovie(newDbMovie: DbMovie): Promise<void> {
+    const jsonDb: JsonDatabase = await this.readJsonDatabase();
+    jsonDb.movies.push(newDbMovie);
+    const updatedJsonDb: string = JSON.stringify(jsonDb, null, 3);
+    await fs.promises.writeFile(this.dbPath, updatedJsonDb);
+  }
+
   public async findAllGenres(): Promise<string[]> {
     const { genres } = await this.readJsonDatabase();
     return genres;

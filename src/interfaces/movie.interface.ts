@@ -9,6 +9,8 @@ interface BaseMovie {
   posteUrl?: string;
 }
 
+export type AddMovie = BaseMovie;
+
 export interface Movie extends BaseMovie {
   id: number;
 }

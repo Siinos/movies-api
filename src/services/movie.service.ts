@@ -1,8 +1,12 @@
 import MovieRepository from '@repositories/movie.repository';
+import AddMovieDto from '@dtos/add-movie.dto';
 import { DbMovie, Movie } from '@interfaces/movie.interface';
 import MovieMapper from '@mappers/movie.mapper';
 import { Service } from 'typedi';
 import { MoviesQueryParams } from '@interfaces/movies-query-params.interface';
+import HttpError from '@errors/http.error';
+import { StatusCodes } from 'http-status-codes';
+import { HTTP_ERROR_CODE, HTTP_ERROR_MESSAGE } from '@errors/errors.enum';
 
 @Service()
 export default class MovieService {
@@ -18,6 +22,27 @@ export default class MovieService {
     } else {
       return await this.getOneRandomMovie();
     }
+  }
+
+  public async addMovie(addMovieDto: AddMovieDto): Promise<Movie> {
+    const dbMovies: DbMovie[] = await this.movieRepository.findAllMovies();
+    const id: number = dbMovies.length + 1;
+    const movie: Movie = { id, ...addMovieDto };
+    const newDbMovie: DbMovie = this.movieMapper.mapMovieToDbMovie(movie);
+    const movieAlreadyExists: DbMovie = dbMovies.filter((movie) => this.compareDbMovies(newDbMovie, movie))[0];
+
+    if (movieAlreadyExists) {
+      throw new HttpError(
+        StatusCodes.UNPROCESSABLE_ENTITY,
+        HTTP_ERROR_CODE.REQUESTED_MOVIE_ALREADY_EXISTS_IN_DB,
+        HTTP_ERROR_MESSAGE.REQUESTED_MOVIE_ALREADY_EXISTS_IN_DB,
+        { movieFromDb: movieAlreadyExists }
+      );
+    }
+
+    await this.movieRepository.saveMovie(newDbMovie);
+
+    return movie;
   }
 
   private async getAllMoviesMatchingGenresAndNarrowedByRuntime(duration: number, genres: string[]): Promise<Movie[]> {
@@ -45,5 +70,17 @@ export default class MovieService {
     const dbMovie: DbMovie = await this.movieRepository.findOneRandomMovie();
     const movie: Movie = this.movieMapper.mapDbMovieToMovie(dbMovie);
     return movie;
+  }
+
+  /*
+  There is no need to compare whole objects because, for example, a movie with a different title
+  but similar rest of the properties is still a different movie.
+  */
+  private compareDbMovies(dbMovie: DbMovie, compareDbMovie: DbMovie): boolean {
+    return (
+      dbMovie.title === compareDbMovie.title &&
+      dbMovie.year === compareDbMovie.year &&
+      dbMovie.director === compareDbMovie.director
+    );
   }
 }
