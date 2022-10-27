@@ -46,3 +46,25 @@ In any of those cases we don't want to have duplicates.
 **Remember about proper error handling**
 
 **We require code in git repository**
+
+---
+
+## Postman api tests
+
+In main directoty, there is a movies-api.postman_collection.json file which you can import as a new collection in Postman installed on your machine. This file contains all most important requests required to manual API testing.
+
+!! correct way of sending genres in query params is: "?genres=Animation&genres=Comedy" etc.
+
+## Running application
+
+You can run application in two ways. First one is recommended for development using npm and node.js installed locally on your machine. Second one is recommended for production and it works using Docker.
+
+### Local environment
+
+1. Copy .env.example in .env and optionally update standard configuration if you want.
+2. Run `npm install`.
+3. Run `npm start`.
+
+### Production environment
+1. Copy .env.example in .env and optionally update standard configuration if you want.
+2. Run `docker-compose up --build -d`.

@@ -1,0 +1,10 @@
+version: '3.9'
+
+services:
+  node:
+    build: .
+    hostname: movies-api-node
+    container_name: movies-api-node
+    restart: on-failure
+    ports:
+      - '8080:8080'
