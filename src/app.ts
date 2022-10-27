@@ -4,6 +4,7 @@ import { controllers } from '@controllers/index';
 import { Container } from 'typedi';
 import { useExpressServer, useContainer } from 'routing-controllers';
 import ErrorHandler from '@middlewares/error-handler.middleware';
+import cors from 'cors';
 
 export class App {
   private app: Application;
@@ -26,6 +27,7 @@ export class App {
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(express.json());
     this.app.use(compression());
+    this.app.use(cors({ methods: ['GET', 'POST'], origin: '*' }));
     this.app.set('etag', false);
   }
 
