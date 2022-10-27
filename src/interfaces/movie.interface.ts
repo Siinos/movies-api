@@ -6,7 +6,7 @@ interface BaseMovie {
   director: string;
   actors?: string;
   plot?: string;
-  posteUrl?: string;
+  posterUrl?: string;
 }
 
 export type AddMovie = BaseMovie;

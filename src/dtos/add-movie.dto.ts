@@ -37,5 +37,5 @@ export default class AddMovieDto implements AddMovie {
 
   @IsOptional()
   @IsString()
-  public posteUrl?: string;
+  public posterUrl?: string;
 }

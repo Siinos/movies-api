@@ -13,7 +13,7 @@ export default class MovieMapper {
       director: dbMovie.director,
       actors: dbMovie.actors,
       plot: dbMovie.plot,
-      posteUrl: dbMovie.posteUrl
+      posterUrl: dbMovie.posterUrl
     };
 
     return movie;
@@ -29,7 +29,7 @@ export default class MovieMapper {
       director: movie.director,
       actors: movie.actors,
       plot: movie.plot,
-      posteUrl: movie.posteUrl
+      posterUrl: movie.posterUrl
     };
 
     return dbMovie;
