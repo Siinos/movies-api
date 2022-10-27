@@ -8,13 +8,21 @@ import { StatusCodes } from 'http-status-codes';
 
 export const validationMiddleware = (
   type: any,
-  value: string | 'body' | 'query' | 'params' = 'body',
+  value: string | 'body' | 'query',
   skipMissingProperties = false,
   whitelist = true,
   forbidNonWhitelisted = true
 ): RequestHandler => {
   return async (req: Request, res: Response, next: NextFunction) => {
-    const obj = plainToClass(type, req[value]);
+    let plainData = null;
+
+    if (value === 'body') {
+      plainData = req.body;
+    } else if (value === 'query') {
+      plainData = req.query;
+    }
+
+    const obj = plainToClass(type, plainData);
     const validationErrors = await validate(obj, { skipMissingProperties, whitelist, forbidNonWhitelisted });
 
     if (validationErrors.length > 0) {
