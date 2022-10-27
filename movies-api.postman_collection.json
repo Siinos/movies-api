@@ -1,0 +1,156 @@
+{
+	"info": {
+		"_postman_id": "9b87a5e9-5b8d-43b4-8b5f-c74c761894bb",
+		"name": "movies-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get single random movie",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/movies",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add new movie",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"genres\": [\r\n        \"Action\",\r\n        \"Sci-Fi\"\r\n    ],\r\n    \"title\": \"The Matrix\",\r\n    \"year\": 1999,\r\n    \"runtime\": 136,\r\n    \"director\": \"Lilly Wachowski, Lana Wachowski\",\r\n    \"actors\": \"Keanu Reeves, Carrie-Anne Moss, Laurence Fishburne, Hugo Weaving, Gloria Foster, Joe Pantoliano, Marcus Chong, Julian Arahanga, Belinda McClory\",\r\n    \"plot\": \"Computer hacker Neo learns from mysterious rebels that the world he lives in is just an image sent to his brain by robots.\",\r\n    \"posteUrl\": \"https://m.media-amazon.com/images/I/51JSM0+hDmL._AC_.jpg\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/movies",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get single random movie in runtime range",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/movies?duration=150",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"movies"
+					],
+					"query": [
+						{
+							"key": "duration",
+							"value": "150"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all movies matching genres",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/movies?genres=Animation&genres=Adventure&genres=Comedy",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"movies"
+					],
+					"query": [
+						{
+							"key": "genres",
+							"value": "Animation"
+						},
+						{
+							"key": "genres",
+							"value": "Adventure"
+						},
+						{
+							"key": "genres",
+							"value": "Comedy"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all movies matching genres and narrowed by runtime",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/movies?genres=Animation&genres=Adventure&genres=Comedy&duration=150",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"movies"
+					],
+					"query": [
+						{
+							"key": "genres",
+							"value": "Animation"
+						},
+						{
+							"key": "genres",
+							"value": "Adventure"
+						},
+						{
+							"key": "genres",
+							"value": "Comedy"
+						},
+						{
+							"key": "duration",
+							"value": "150"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
