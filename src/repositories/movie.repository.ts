@@ -18,7 +18,7 @@ export default class MovieRepository {
   }
 
   public async findOneRandomMovie(): Promise<DbMovie> {
-    const { movies } = await this.readJsonDatabase();
+    const movies: DbMovie[] = await this.findAllMovies();
     return this.getRandomMovieFromMoviesArray(movies);
   }
 
@@ -28,7 +28,7 @@ export default class MovieRepository {
   }
 
   public async findAllMoviesMatchingGenres(genres: string[]): Promise<DbMovie[]> {
-    const { movies } = await this.readJsonDatabase();
+    const movies: DbMovie[] = await this.findAllMovies();
     const matchingMovies: DbMovie[] = movies.filter((movie) =>
       isArrayContainAtLeastOneValueOfCompareArray(movie.genres, genres)
     );
@@ -60,7 +60,7 @@ export default class MovieRepository {
   }
 
   private async findAllMoviesInRuntimeRange(duration: number): Promise<DbMovie[]> {
-    const { movies } = await this.readJsonDatabase();
+    const movies: DbMovie[] = await this.findAllMovies();
     return this.getMoviesInRuntimeRange(movies, duration);
   }
 
