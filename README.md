@@ -59,8 +59,6 @@ In main directoty, there is a movies-api.postman_collection.json file which you 
 
 You can run application in two ways. First one is recommended for development using npm and node.js installed locally on your machine. Second one is recommended for production and it works using Docker.
 
-
-
 ### Local environment
 
 1. Run `cp .env.example .env`.
