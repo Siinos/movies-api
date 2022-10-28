@@ -5,10 +5,12 @@ import { Container } from 'typedi';
 import { useExpressServer, useContainer } from 'routing-controllers';
 import ErrorHandler from '@middlewares/error-handler.middleware';
 import cors from 'cors';
+import { Server } from 'http';
 
 export class App {
   private app: Application;
   private readonly port: Number;
+  private server: Server;
 
   constructor() {
     this.app = express();
@@ -19,8 +21,12 @@ export class App {
   }
 
   public start(): void {
-    this.app.listen(this.port);
+    this.server = this.app.listen(this.port);
     console.log(`⚡️ [movies-api]: Running at localhost:${this.port}.`);
+  }
+
+  public getServer(): Server {
+    return this.server;
   }
 
   private initializeMiddlewares(): void {

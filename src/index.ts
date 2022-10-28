@@ -16,6 +16,8 @@ moduleAlias.addAliases({
 });
 
 import { App } from './app';
+import { Server } from 'http';
 
 const app = new App();
 app.start();
+export const server: Server = app.getServer();
