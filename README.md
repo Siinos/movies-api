@@ -61,10 +61,25 @@ You can run application in two ways. First one is recommended for development us
 
 ### Local environment
 
-1. Copy .env.example in .env and optionally update standard configuration if you want.
+1. Run `cp .env.example .env`.
 2. Run `npm install`.
 3. Run `npm start`.
 
 ### Production environment
-1. Copy .env.example in .env and optionally update standard configuration if you want.
+
+#### Docker
+
+1. Run `cp .env.example .env`.
 2. Run `docker-compose up --build -d`.
+
+#### NPM + Node.js installed on machine
+
+1. Run `cp .env.example .env`.
+2. Run `npm install`.
+3. Run `npm run build:prod`.
+4. Run `npm install --only=production`.
+5. Run `npm run start:prod`.
+
+### Unit tests
+
+1. Run `npm test`.
