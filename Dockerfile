@@ -1,21 +1,20 @@
 # --------------> The build image
-FROM node:16.17.1-bullseye-slim
+FROM node:16.17.1-bullseye-slim AS build
 WORKDIR /usr/src/app
 COPY package*.json ./
 COPY . .
 RUN npm install
 RUN npm run build:prod
+RUN npm install --only=production
 
 # --------------> The production image
 FROM node:16.17.1-bullseye-slim
 ENV NODE_ENV production
 WORKDIR /usr/src/app
-COPY package*.json ./
-RUN npm install --only=production
-COPY --from=0 /usr/src/app/dist ./dist
-COPY .env.example ./.env
-COPY database ./database
+COPY --chown=node:node --from=build /usr/src/app/node_modules /usr/src/app/node_modules
+COPY --chown=node:node --from=build /usr/src/app/dist ./dist
+COPY --chown=node:node --from=build /usr/src/app/.env ./.env
+COPY --chown=node:node --from=build /usr/src/app/database ./database
 USER node
-COPY --chown=node:node . /dist
 EXPOSE 8080
-CMD [ "npm", "run", "start:prod" ]
+CMD [ "sh", "-c", "node -r dotenv/config dist/index.js" ]
