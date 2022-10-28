@@ -66,7 +66,7 @@ export default class MovieRepository {
 
   private getRandomMovieFromMoviesArray(movies: DbMovie[]): DbMovie {
     const moviesLength: number = movies.length;
-    const randomId: number = getRandomIntNumber(1, moviesLength);
+    const randomId: number = getRandomIntNumber(1, moviesLength - 1);
     return movies[randomId];
   }
 
