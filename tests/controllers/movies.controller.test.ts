@@ -110,6 +110,30 @@ describe('MoviesController', () => {
           }
           done();
         });
+
+      it('Should return status 422 and detailed errors messages if any of provided query parameters was invalid', (done) => {
+        const expectedResponse = {
+          errorCode: 'UNPROCESSABLE_ENTITY',
+          message: 'Dto validation errors occured.',
+          status: 422,
+          details: [
+            {
+              field: 'duration',
+              value: null,
+              messages: ['duration must not be less than 10', 'duration must be a positive number']
+            }
+          ]
+        };
+        chai
+          .request(server)
+          .get('/v1/movies?genres=Animation&genres=Drama&genres=Mystery&duration=199invalid')
+          .end((err, res) => {
+            expect(res.status).to.equals(StatusCodes.UNPROCESSABLE_ENTITY);
+            expect(res.body).to.be.an('object');
+            expect(res.body).to.eql(expectedResponse);
+            done();
+          });
+      });
     });
 
     describe('addMovie', () => {
