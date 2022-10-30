@@ -167,7 +167,7 @@ describe('MovieRepository', () => {
   describe('saveMovie', () => {
     // Clear db after test so other tests can still run properly
     after(async () => {
-      const dbPath: string = join(process.cwd(), process.env.DB_PATH as string);
+      const dbPath: string = join(process.cwd(), process.env.TEST_DB_PATH as string);
       const buffer = await fs.promises.readFile(dbPath);
       const jsonDb: JsonDatabase = await JSON.parse(buffer.toString());
       jsonDb.movies.pop();

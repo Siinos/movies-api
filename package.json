@@ -9,7 +9,7 @@
     "start": "ts-node-dev --respawn --transpile-only -r dotenv/config src/index.ts",
     "build:prod": "tsc",
     "start:prod": "node -r dotenv/config dist/index.js",
-    "test": "mocha -r tsconfig-paths/register -r ts-node/register -r dotenv/config 'tests/**/*.ts'"
+    "test": "cross-env NODE_ENV=test mocha -r tsconfig-paths/register -r ts-node/register -r dotenv/config 'tests/**/*.ts'"
   },
   "repository": {
     "type": "git",
@@ -39,6 +39,7 @@
     "@typescript-eslint/parser": "^5.40.1",
     "chai": "^4.3.6",
     "chai-http": "^4.3.0",
+    "cross-env": "^7.0.3",
     "eslint": "^8.25.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",

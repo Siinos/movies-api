@@ -139,7 +139,7 @@ describe('MoviesController', () => {
 
     describe('addMovie', () => {
       after(async () => {
-        const dbPath: string = join(process.cwd(), process.env.DB_PATH as string);
+        const dbPath: string = join(process.cwd(), process.env.TEST_DB_PATH as string);
         const buffer = await fs.promises.readFile(dbPath);
         const jsonDb: JsonDatabase = await JSON.parse(buffer.toString());
         jsonDb.movies.pop();

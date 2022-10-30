@@ -14,7 +14,10 @@ export default class MovieRepository {
   private dbPath: string;
 
   constructor() {
-    this.dbPath = join(process.cwd(), process.env.DB_PATH as string);
+    this.dbPath = join(
+      process.cwd(),
+      process.env.NODE_ENV === 'test' ? (process.env.TEST_DB_PATH as string) : (process.env.DB_PATH as string)
+    );
   }
 
   public async findOneRandomMovie(): Promise<DbMovie> {
