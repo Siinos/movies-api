@@ -15,6 +15,8 @@ COPY --chown=node:node --from=build /usr/src/app/node_modules /usr/src/app/node_
 COPY --chown=node:node --from=build /usr/src/app/dist ./dist
 COPY --chown=node:node --from=build /usr/src/app/.env ./.env
 COPY --chown=node:node --from=build /usr/src/app/database ./database
+RUN mkdir -p /usr/src/app/logs
+RUN chown node:node /usr/src/app/logs
 USER node
 EXPOSE 8080
 CMD [ "sh", "-c", "node -r dotenv/config dist/index.js" ]
