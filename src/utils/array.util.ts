@@ -1,10 +1,10 @@
-export function isArrayContainAtLeastOneValueOfCompareArray(array: Array<any>, compareArray: Array<any>): boolean {
+export function isArrayContainAtLeastOneValueOfCompareArray<T>(array: T[], compareArray: T[]): boolean {
   for (const value of array) {
     if (compareArray.includes(value)) return true;
   }
   return false;
 }
 
-export function countNumberOfMatchingValuesBetweenArrays(array: Array<any>, compareArray: Array<any>): number {
+export function countNumberOfMatchingValuesBetweenArrays<T>(array: T[], compareArray: T[]): number {
   return array.filter((value) => compareArray.includes(value)).length;
 }

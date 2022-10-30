@@ -10,7 +10,7 @@ export function IsCorrectGenre(validationOptions?: ValidationOptions) {
       propertyName,
       options: validationOptions,
       validator: {
-        async validate(value: any) {
+        async validate(value: string) {
           const movieRepository: MovieRepository = Container.get(MovieRepository);
           const genres: string[] = await movieRepository.findAllGenres();
           return genres.includes(value);

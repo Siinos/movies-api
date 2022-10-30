@@ -5,6 +5,7 @@ import { IsNotEmpty, IsString, IsArray, MaxLength, IsInt, IsOptional } from 'cla
 
 export default class AddMovieDto implements AddMovie {
   @IsArray()
+  @IsString({each: true})
   @IsNotEmpty()
   @IsCorrectGenre({ message: ValidationMessages.INVALID_GENRES, each: true })
   public genres: string[];

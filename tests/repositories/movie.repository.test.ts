@@ -103,7 +103,7 @@ describe('MovieRepository', () => {
   describe('findAllMoviesMatchingGenresAndNarrowedByRuntime', () => {
     it('Should return array of movies [DbMovie[] type] matching genres, sorted by a number of matching genres and narrowed by runtime', async () => {
       const genres: string[] = ['Animation', 'Adventure', 'Comedy'];
-      const duration: number = 199;
+      const duration = 199;
       const expectedDbMovies: DbMovie[] = [
         {
           id: 77,

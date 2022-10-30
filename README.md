@@ -85,3 +85,10 @@ You can run application in two ways. First one is recommended for development us
 1. Run `cp .env.example .env`.
 2. Run `npm install`.
 3. Run `npm test`.
+
+### Code style
+
+Project uses Prettier and ESLint to keep code clean. In order to reformat/check code run:
+
+1. Run `npm run lint`.
+2. Run `npm run prettier-format`.

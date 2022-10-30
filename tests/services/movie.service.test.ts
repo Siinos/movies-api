@@ -54,7 +54,7 @@ describe('MovieService', () => {
       const movieService: MovieService = new MovieService(movieRepository, movieMapper);
 
       try {
-        const savedMovie = await movieService.addMovie(newMovie);
+        await movieService.addMovie(newMovie);
       } catch (error: any) {
         expect(error.status).is.equal(StatusCodes.UNPROCESSABLE_ENTITY);
         expect(error.errorCode).is.equal(HttpErrorCodes.REQUESTED_MOVIE_ALREADY_EXISTS_IN_DB);
