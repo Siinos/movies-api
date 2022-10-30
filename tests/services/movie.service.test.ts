@@ -1,4 +1,4 @@
-import { HTTP_ERROR_CODE, HTTP_ERROR_MESSAGE } from '@errors/errors.enum';
+import { HttpErrorCodes, HttpErrorMessages } from '@errors/errors.enum';
 import { AddMovie, DbMovie, Movie } from '@interfaces/movie.interface';
 import { MoviesQueryParams } from '@interfaces/movies-query-params.interface';
 import MovieMapper from '@mappers/movie.mapper';
@@ -57,8 +57,8 @@ describe('MovieService', () => {
         const savedMovie = await movieService.addMovie(newMovie);
       } catch (error: any) {
         expect(error.status).is.equal(StatusCodes.UNPROCESSABLE_ENTITY);
-        expect(error.errorCode).is.equal(HTTP_ERROR_CODE.REQUESTED_MOVIE_ALREADY_EXISTS_IN_DB);
-        expect(error.message).is.equal(HTTP_ERROR_MESSAGE.REQUESTED_MOVIE_ALREADY_EXISTS_IN_DB);
+        expect(error.errorCode).is.equal(HttpErrorCodes.REQUESTED_MOVIE_ALREADY_EXISTS_IN_DB);
+        expect(error.message).is.equal(HttpErrorMessages.REQUESTED_MOVIE_ALREADY_EXISTS_IN_DB);
         return;
       }
     });

@@ -6,7 +6,9 @@ import { Service } from 'typedi';
 import { MoviesQueryParams } from '@interfaces/movies-query-params.interface';
 import HttpError from '@errors/http.error';
 import { StatusCodes } from 'http-status-codes';
-import { HTTP_ERROR_CODE, HTTP_ERROR_MESSAGE } from '@errors/errors.enum';
+import { HttpErrorCodes, HttpErrorMessages } from '@errors/errors.enum';
+import { logger } from '@commons/logger';
+import { LoggerEvents } from '@commons/logger-events.enum';
 
 @Service()
 export default class MovieService {
@@ -34,13 +36,14 @@ export default class MovieService {
     if (movieAlreadyExists) {
       throw new HttpError(
         StatusCodes.UNPROCESSABLE_ENTITY,
-        HTTP_ERROR_CODE.REQUESTED_MOVIE_ALREADY_EXISTS_IN_DB,
-        HTTP_ERROR_MESSAGE.REQUESTED_MOVIE_ALREADY_EXISTS_IN_DB,
+        HttpErrorCodes.REQUESTED_MOVIE_ALREADY_EXISTS_IN_DB,
+        HttpErrorMessages.REQUESTED_MOVIE_ALREADY_EXISTS_IN_DB,
         { movieFromDb: movieAlreadyExists }
       );
     }
 
     await this.movieRepository.saveMovie(newDbMovie);
+    logger.info({ event: LoggerEvents.NEW_MOVIE_ADDED, data: addMovieDto });
 
     return movie;
   }

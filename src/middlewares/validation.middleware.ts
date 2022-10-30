@@ -1,4 +1,4 @@
-import { HTTP_ERROR_CODE, HTTP_ERROR_MESSAGE } from '@errors/errors.enum';
+import { HttpErrorCodes, HttpErrorMessages } from '@errors/errors.enum';
 import HttpError from '@errors/http.error';
 import { ValidationResult } from '@interfaces/validation-result.interface';
 import { plainToClass } from 'class-transformer';
@@ -29,8 +29,8 @@ export const validationMiddleware = (
       next(
         new HttpError(
           StatusCodes.UNPROCESSABLE_ENTITY,
-          HTTP_ERROR_CODE.UNPROCESSABLE_ENTITY,
-          HTTP_ERROR_MESSAGE.DTO_VALIDATION_ERRORS_OCCURED,
+          HttpErrorCodes.UNPROCESSABLE_ENTITY,
+          HttpErrorMessages.DTO_VALIDATION_ERRORS_OCCURED,
           formatValidationErrors(validationErrors)
         )
       );

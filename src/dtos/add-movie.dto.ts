@@ -1,4 +1,4 @@
-import { VALIDATION_MESSAGE } from '@errors/errors.enum';
+import { ValidationMessages } from '@errors/errors.enum';
 import { AddMovie } from '@interfaces/movie.interface';
 import { IsCorrectGenre } from '@validators/is-correct-genre.validator';
 import { IsNotEmpty, IsString, IsArray, MaxLength, IsInt, IsOptional } from 'class-validator';
@@ -6,7 +6,7 @@ import { IsNotEmpty, IsString, IsArray, MaxLength, IsInt, IsOptional } from 'cla
 export default class AddMovieDto implements AddMovie {
   @IsArray()
   @IsNotEmpty()
-  @IsCorrectGenre({ message: VALIDATION_MESSAGE.INVALID_GENRES, each: true })
+  @IsCorrectGenre({ message: ValidationMessages.INVALID_GENRES, each: true })
   public genres: string[];
 
   @IsString()

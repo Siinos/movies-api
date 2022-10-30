@@ -1,3 +1,4 @@
+import { HttpErrorCodes, HttpErrorMessages } from '@errors/errors.enum';
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 import { server } from '../../src/index';
@@ -113,8 +114,8 @@ describe('MoviesController', () => {
 
       it('Should return status 422 and detailed errors messages if any of provided query parameters was invalid', (done) => {
         const expectedResponse = {
-          errorCode: 'UNPROCESSABLE_ENTITY',
-          message: 'Dto validation errors occured.',
+          errorCode: HttpErrorCodes.UNPROCESSABLE_ENTITY,
+          message: HttpErrorMessages.DTO_VALIDATION_ERRORS_OCCURED,
           status: 422,
           details: [
             {
@@ -188,8 +189,8 @@ describe('MoviesController', () => {
           posterUrl: 'https://m.media-amazon.com/images/I/51JSM0+hDmL._AC_.jpg'
         };
         const expectedResponse = {
-          errorCode: 'UNPROCESSABLE_ENTITY',
-          message: 'Dto validation errors occured.',
+          errorCode: HttpErrorCodes.UNPROCESSABLE_ENTITY,
+          message: HttpErrorMessages.DTO_VALIDATION_ERRORS_OCCURED,
           status: 422,
           details: [
             {
@@ -230,8 +231,8 @@ describe('MoviesController', () => {
             'https://images-na.ssl-images-amazon.com/images/M/MV5BNDc4MThhN2EtZjMzNC00ZDJmLThiZTgtNThlY2UxZWMzNjdkXkEyXkFqcGdeQXVyNDk3NzU2MTQ@._V1_SX300.jpg'
         };
         const expectedResponse = {
-          errorCode: 'REQUESTED_MOVIE_ALREADY_EXISTS_IN_DB',
-          message: 'Requested movie data already exists in database.',
+          errorCode: HttpErrorCodes.REQUESTED_MOVIE_ALREADY_EXISTS_IN_DB,
+          message: HttpErrorMessages.REQUESTED_MOVIE_ALREADY_EXISTS_IN_DB,
           status: 422,
           details: {
             movieFromDb: {

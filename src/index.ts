@@ -12,7 +12,8 @@ moduleAlias.addAliases({
   '@repositories': `${__dirname}/repositories`,
   '@services': `${__dirname}/services`,
   '@utils': `${__dirname}/utils`,
-  '@validators': `${__dirname}/validators`
+  '@validators': `${__dirname}/validators`,
+  '@commons': `${__dirname}/commons`
 });
 
 import { App } from './app';

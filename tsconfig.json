@@ -13,53 +13,23 @@
     "experimentalDecorators": true,
     "strictPropertyInitialization": false,
     "baseUrl": "./src",
-    "typeRoots": [
-      "@types",
-      "./node_modules/@types"
-    ],
+    "typeRoots": ["@types", "./node_modules/@types"],
     "paths": {
-      "@errors/*": [
-        "errors/*"
-      ],
-      "@controllers/*": [
-        "controllers/*"
-      ],
-      "@dtos/*": [
-        "dtos/*"
-      ],
-      "@helpers/*": [
-        "helpers/*"
-      ],
-      "@interfaces/*": [
-        "interfaces/*"
-      ],
-      "@mappers/*": [
-        "mappers/*"
-      ],
-      "@middlewares/*": [
-        "middlewares/*"
-      ],
-      "@repositories/*": [
-        "repositories/*"
-      ],
-      "@services/*": [
-        "services/*"
-      ],
-      "@utils/*": [
-        "utils/*"
-      ],
-      "@validators/*": [
-        "validators/*"
-      ],
+      "@errors/*": ["errors/*"],
+      "@controllers/*": ["controllers/*"],
+      "@dtos/*": ["dtos/*"],
+      "@helpers/*": ["helpers/*"],
+      "@interfaces/*": ["interfaces/*"],
+      "@mappers/*": ["mappers/*"],
+      "@middlewares/*": ["middlewares/*"],
+      "@repositories/*": ["repositories/*"],
+      "@services/*": ["services/*"],
+      "@utils/*": ["utils/*"],
+      "@validators/*": ["validators/*"],
+      "@commons/*": ["commons/*"]
     }
   },
-  "lib": [
-    "ESNext"
-  ],
-  "include": [
-    "./src/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "lib": ["ESNext"],
+  "include": ["./src/**/*.ts"],
+  "exclude": ["node_modules"]
 }
