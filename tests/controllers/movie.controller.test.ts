@@ -194,6 +194,11 @@ describe('MoviesController', () => {
           status: StatusCodes.UNPROCESSABLE_ENTITY,
           details: [
             {
+              field: 'genres',
+              value: [],
+              messages: ['genres should not be empty']
+            },
+            {
               field: 'year',
               value: 'test',
               messages: ['year must be an integer number']
