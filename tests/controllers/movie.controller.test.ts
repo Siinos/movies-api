@@ -116,7 +116,7 @@ describe('MoviesController', () => {
         const expectedResponse = {
           errorCode: HttpErrorCodes.UNPROCESSABLE_ENTITY,
           message: HttpErrorMessages.DTO_VALIDATION_ERRORS_OCCURED,
-          status: 422,
+          status: StatusCodes.UNPROCESSABLE_ENTITY,
           details: [
             {
               field: 'duration',
@@ -191,7 +191,7 @@ describe('MoviesController', () => {
         const expectedResponse = {
           errorCode: HttpErrorCodes.UNPROCESSABLE_ENTITY,
           message: HttpErrorMessages.DTO_VALIDATION_ERRORS_OCCURED,
-          status: 422,
+          status: StatusCodes.UNPROCESSABLE_ENTITY,
           details: [
             {
               field: 'year',
@@ -233,7 +233,7 @@ describe('MoviesController', () => {
         const expectedResponse = {
           errorCode: HttpErrorCodes.REQUESTED_MOVIE_ALREADY_EXISTS_IN_DB,
           message: HttpErrorMessages.REQUESTED_MOVIE_ALREADY_EXISTS_IN_DB,
-          status: 422,
+          status: StatusCodes.UNPROCESSABLE_ENTITY,
           details: {
             movieFromDb: {
               id: 146,
